@@ -1,5 +1,19 @@
 package main
 
+import (
+	"fmt"
+	"log"
+	"os"
+
+	"github.com/joho/godotenv"
+)
+
 func main() {
-	println("Hello, World!")
+	err := godotenv.Load()
+
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	fmt.Println(os.Getenv("API_PORT"))
 }

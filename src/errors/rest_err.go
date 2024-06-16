@@ -57,6 +57,14 @@ func NewNotFoundError(message string) *RestErr {
 	}
 }
 
+func NewMethodNotAllowedError(message string) *RestErr {
+	return &RestErr{
+		Message: message,
+		Status:  405,
+		Err:     "method_not_allowed",
+	}
+}
+
 func NewUnprocessableEntityError(message string) *RestErr {
 	return &RestErr{
 		Message: message,

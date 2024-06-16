@@ -3,7 +3,6 @@ package usersController
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/marcelofabianov/go-mvc/src/api/request"
-	rest_err "github.com/marcelofabianov/go-mvc/src/errors"
 )
 
 func FindUserById(c *gin.Context) {
@@ -20,8 +19,9 @@ func CreateUser(c *gin.Context) {
 	var userRequest request.UserRequest
 
 	if err := c.ShouldBindJSON(&userRequest); err != nil {
-		restErr := rest_err.NewBadRequestError("invalid json body")
-		c.JSON(restErr.Status, restErr)
+		errRest := request.ValidateRequest(err)
+		c.JSON(errRest.Status, errRest)
+		return
 	}
 
 	c.JSON(201, gin.H{

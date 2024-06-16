@@ -65,11 +65,12 @@ func NewMethodNotAllowedError(message string) *RestErr {
 	}
 }
 
-func NewUnprocessableEntityError(message string) *RestErr {
+func NewUnprocessableEntityError(message string, causes []Causes) *RestErr {
 	return &RestErr{
 		Message: message,
 		Status:  422,
 		Err:     "unprocessable_entity",
+		Causes:  causes,
 	}
 }
 

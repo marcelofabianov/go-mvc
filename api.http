@@ -15,17 +15,24 @@ GET http://localhost:8080/api/v1/users/1
 
 ### POST /api/v1/users
 POST http://localhost:8080/api/v1/users
-Content-Type: application/x-www-form-urlencoded
+Content-Type: application/json
 
-name=John Doe&email=johndoe@example.com
+{
+  "name": "John Doe",
+  "email": "joh@email.com",
+  "password": "password"
+}
 
 ###
 
 ### PUT /api/v1/users/:user_id
 PUT http://localhost:8080/api/v1/users/1
-Content-Type: application/x-www-form-urlencoded
+Content-Type: application/json
 
-name=Jane Doe&email=janedoe@example.com
+{
+  "name": "Jane Doe",
+  "email": "jane@email.com"
+}
 
 ###
 

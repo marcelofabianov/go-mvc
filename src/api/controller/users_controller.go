@@ -1,6 +1,10 @@
 package usersController
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/marcelofabianov/go-mvc/src/api/request"
+	rest_err "github.com/marcelofabianov/go-mvc/src/errors"
+)
 
 func FindUserById(c *gin.Context) {
 	c.JSON(200, gin.H{
@@ -13,9 +17,16 @@ func GetUsers(c *gin.Context) {
 }
 
 func CreateUser(c *gin.Context) {
+	var userRequest request.UserRequest
+
+	if err := c.ShouldBindJSON(&userRequest); err != nil {
+		restErr := rest_err.NewBadRequestError("invalid json body")
+		c.JSON(restErr.Status, restErr)
+	}
+
 	c.JSON(201, gin.H{
-		"name":  c.PostForm("name"),
-		"email": c.PostForm("email"),
+		"name":  userRequest.Name,
+		"email": userRequest.Email,
 	})
 }
 

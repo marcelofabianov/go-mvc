@@ -5,12 +5,17 @@ Simples projeto de estudo de Go.
 ## Estrutura
 
 ```
-src
 ├── api
 │   ├── controller
+│   │   └── users_controller.go
+│   ├── middleware
+│   │   └── method_not_allowed.go
 │   ├── request
 │   ├── response
+│   ├── routes
+│   │   └── routes.go
 │   └── validate
-├── config
+├── errors
+│   └── rest_err.go
 └── model
 ```

@@ -12,6 +12,10 @@ type Causes struct {
 	Message string `json:"message"`
 }
 
+func (e *RestErr) Error() string {
+	return e.Message
+}
+
 func NewRestErr(message string, status int, err string, causes []Causes) *RestErr {
 	return &RestErr{
 		Message: message,

@@ -12,13 +12,13 @@ src
 │   ├── middleware
 │   │   └── method_not_allowed.go
 │   ├── request
-│   │   └── user_request.go
+│   │   ├── user_request.go
+│   │   └── validate.go
 │   ├── response
 │   │   └── user_response.go
-│   ├── routes
-│   │   ├── routes.go
-│   │   └── users.go
-│   └── validate
+│   └── routes
+│       ├── routes.go
+│       └── users.go
 ├── errors
 │   └── rest_err.go
 └── model

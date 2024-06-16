@@ -3,6 +3,7 @@ package usersController
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/marcelofabianov/go-mvc/src/api/request"
+	logger "github.com/marcelofabianov/go-mvc/src/log"
 )
 
 func FindUserById(c *gin.Context) {
@@ -20,7 +21,11 @@ func CreateUser(c *gin.Context) {
 
 	if err := c.ShouldBindJSON(&userRequest); err != nil {
 		errRest := request.ValidateRequest(err)
+
+		logger.Error(errRest.Message, err)
+
 		c.JSON(errRest.Status, errRest)
+
 		return
 	}
 

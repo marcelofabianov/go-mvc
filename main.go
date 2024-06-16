@@ -2,15 +2,19 @@ package main
 
 import (
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"github.com/marcelofabianov/go-mvc/src/api/middleware"
 	"github.com/marcelofabianov/go-mvc/src/api/routes"
 	rest_err "github.com/marcelofabianov/go-mvc/src/errors"
 )
 
 func main() {
+	godotenv.Load()
+
 	router := gin.Default()
 
 	router.Use(middleware.MethodNotAllowedMiddleware())
@@ -22,8 +26,12 @@ func main() {
 		c.JSON(err.Status, err)
 	})
 
+	addrApi := os.Getenv("API_URL")
+
+	println("Starting API on", addrApi)
+
 	server := &http.Server{
-		Addr:           ":8080",
+		Addr:           addrApi,
 		Handler:        router,
 		ReadTimeout:    5 * time.Second,
 		WriteTimeout:   10 * time.Second,

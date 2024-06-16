@@ -29,12 +29,10 @@ func ValidateRequest(validation_err error) *rest_err.RestErr {
 	var jsonValidationErr validator.ValidationErrors
 
 	if errors.As(validation_err, &jsonErr) {
-		println("Invalid field type")
 		return rest_err.NewBadRequestError("Invalid field type")
 	}
 
 	if errors.As(validation_err, &jsonValidationErr) {
-		println("Invalid request body")
 		errorsCauses := []rest_err.Causes{}
 
 		for _, e := range validation_err.(validator.ValidationErrors) {

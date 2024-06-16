@@ -10,6 +10,7 @@ import (
 	"github.com/marcelofabianov/go-mvc/src/api/middleware"
 	"github.com/marcelofabianov/go-mvc/src/api/routes"
 	rest_err "github.com/marcelofabianov/go-mvc/src/errors"
+	logger "github.com/marcelofabianov/go-mvc/src/log"
 )
 
 func main() {
@@ -28,7 +29,7 @@ func main() {
 
 	addrApi := os.Getenv("API_URL")
 
-	println("Starting API on", addrApi)
+	logger.Info("Starting the application..." + addrApi)
 
 	server := &http.Server{
 		Addr:           addrApi,

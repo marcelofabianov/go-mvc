@@ -26,9 +26,10 @@ src
 
 # Tecnologias
 
-- (Golang 1.22+)[https://golang.org/]
-- (Gin Gonic)[https://gin-gonic.com/docs/]
-- (Validator)[https://github.com/go-playground/validator]
+- [MongoDB](https://www.mongodb.com/)
+- [Golang 1.22+](https://golang.org/)
+- [Gin Gonic](https://gin-gonic.com/docs/)
+- [Validator](https://github.com/go-playground/validator)
 
 # Features
 
